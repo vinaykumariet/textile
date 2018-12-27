@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+</head>
+<body>
+<ul>
+    {% for a in all_movie %}
+    <li ><a href="{% url 'movie:detail' a.id %}">{{a.id}}</a></li>
+</ul>
+{% endfor %}
+</body>
+</html>

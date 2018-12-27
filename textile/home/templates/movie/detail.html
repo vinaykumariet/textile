@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+</head>
+<body>
+
+  {% if error_message %}
+  <strong>{{ error_message}}</strong>
+  {% endif %}
+<!-- {{a1.actor}}
+{{a1.id}}
+<ul>
+    {% for song in a1.song_set.all %}
+    <li>{{song.songs_name}}</li>
+    </ul>
+    {% endfor %} -->
+
+  <form action="{% url 'movie:favorite' a1.id %}" method="POST">
+      {% csrf_token %}
+      {% for song in a1.song_set.all %}
+        <input type="radio" name="song" id="song{{ forloop.counter}}" value="{{song.id }}" />
+            <label for ="song{{ forloop.counter }}">
+                {{ song.songs_name }}
+                {% if song.is_favorite %}
+                  <img src="C:\Users\Public\Pictures\Sample Pictures\Hydrangeas.jpg"/>
+                {% endif %}
+
+             </label>
+             <input type="submit" value="faforite">
+      {% endfor %}
+
+
+      </form>  
+</body>
+</html>
